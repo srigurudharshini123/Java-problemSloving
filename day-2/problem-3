@@ -1,0 +1,49 @@
+import java.util.Scanner;
+class Main {
+    public static void main(String[] args) {
+ Scanner scan=new Scanner(System.in);
+ int m=scan.nextInt();
+ int n=scan.nextInt();
+ int num1[]=new int[m];
+ int[] num2=new int[n];
+ for(int i=0;i<m;i++){
+     num1[i]=scan.nextInt();
+ }
+  for(int i=0;i<n;i++){
+     num2[i]=scan.nextInt();
+ }
+//  merge
+ int len=m+n;
+ int index=0;
+ int []merge=new int[len];
+     for(int j=0;j<m;j++){
+     merge[index]=num1[j];
+     index++;
+     }
+         index=0;
+     for(int k=0;k<n;k++){
+         merge[index]=num2[k];
+         index++;
+     }
+     //sort  
+     for(int i=0;i<len;i++){
+         for(int j=i+1;j<len;j++){
+             if(merge[i]>merge[j]){
+                 int temp=merge[i];
+                 merge[i]=merge[j];
+                 merge[j]=temp;
+             }
+         }
+     }
+     if(len%2 != 0){
+         System.out.println(merge[len/2]);
+     }
+     else{
+         int med=merge[(len/2)-1]+merge[len/2];
+         System.out.println(med/2);
+     }
+ 
+
+ 
+}
+}
